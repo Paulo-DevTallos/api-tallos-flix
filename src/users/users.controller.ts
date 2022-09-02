@@ -15,17 +15,17 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
+  @Post('POST')
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
+  @Get('GET')
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get(':id')
+  @Get('GET/:id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOneById(id);
   }
