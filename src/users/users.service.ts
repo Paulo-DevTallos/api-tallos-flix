@@ -11,8 +11,10 @@ export class UsersService {
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  create(createUser: CreateUserDto) {
+    const newUser = new this.userModel(createUser);
+
+    return newUser.save();
   }
 
   async findAll() {
@@ -20,7 +22,7 @@ export class UsersService {
   }
 
   findOneById(id: string) {
-    return `This action returns a #${id} user`;
+    return this.userModel.findById(id);
   }
 
   update(id: string, updateUserDto: UpdateUserDto) {
