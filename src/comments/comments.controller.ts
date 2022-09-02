@@ -30,7 +30,7 @@ export class CommentsController {
     return this.commentsService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch('PATCH/:id')
   update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
     return this.commentsService.update(id, updateCommentDto);
   }
