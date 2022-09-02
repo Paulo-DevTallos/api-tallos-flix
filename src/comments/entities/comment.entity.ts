@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 
-export type CommentDocument = Comment & Document;
+export type CommentsDocument = Comments & Document;
 
 @Schema()
-export class User {
+export class Comments {
   @Prop()
   id: string;
 
@@ -21,7 +21,7 @@ export class User {
   text: string;
 
   @Prop()
-  date: { type: Date };
+  date: Date;
 }
 
-export const CommentSchema = SchemaFactory.createForClass(Comment);
+export const CommentsSchema = SchemaFactory.createForClass(Comments);
