@@ -30,7 +30,7 @@ export class UsersController {
     return this.usersService.findOneById(id);
   }
 
-  @Patch(':id')
+  @Patch('PATCH/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
