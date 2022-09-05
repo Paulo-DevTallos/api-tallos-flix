@@ -35,6 +35,6 @@ export class SessionsService {
   }
 
   remove(id: string) {
-    return this.sessionModel.deleteOne({ _id: id });
+    return `This action removes a #${id} session`;
   }
 }
