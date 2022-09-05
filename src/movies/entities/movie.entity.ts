@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Movies } from '../interface/IMovies';
 
 export type MovieDocument = Movie & Document;
 
@@ -43,12 +44,8 @@ export class Movie {
   @Prop()
   writers: [string];
 
-  @Prop()
-  awards: {
-    wins: number;
-    nomination: number;
-    text: string;
-  };
+  @Prop({ type: Object })
+  awards: Movies['Awards'];
 
   @Prop()
   lastupdated: string;
@@ -56,12 +53,8 @@ export class Movie {
   @Prop()
   year: number;
 
-  @Prop()
-  imdb: {
-    rating: number;
-    votes: number;
-    id: number;
-  };
+  @Prop({ type: Object })
+  imdb: Movies['Imdb'];
 
   @Prop()
   countries: [string];
@@ -69,15 +62,8 @@ export class Movie {
   @Prop()
   type: string;
 
-  @Prop()
-  tomatoes: {
-    viewer: {
-      rating: number;
-      numReviews: number;
-      meter: number;
-    };
-    lastUpdated: Date;
-  };
+  @Prop({ type: Object })
+  tomatoes: Movies['Tomatoes'];
 }
 
 export const MoviesSchema = SchemaFactory.createForClass(Movie);
