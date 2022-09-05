@@ -27,16 +27,16 @@ export class SessionsController {
 
   @Get('GET/:id')
   findOne(@Param('id') id: string) {
-    return this.sessionsService.findOne(+id);
+    return this.sessionsService.findOne(id);
   }
 
   @Patch('PATCH/:id')
   update(@Param('id') id: string, @Body() updateSessionDto: UpdateSessionDto) {
-    return this.sessionsService.update(+id, updateSessionDto);
+    return this.sessionsService.update(id, updateSessionDto);
   }
 
   @Delete('DELETE/:id')
   remove(@Param('id') id: string) {
-    return this.sessionsService.remove(+id);
+    return this.sessionsService.remove(id);
   }
 }
