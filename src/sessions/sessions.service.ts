@@ -12,10 +12,8 @@ export class SessionsService {
     private readonly sessionModel: Model<CreateSessionDto>,
   ) {}
 
-  create(createSession: CreateSessionDto) {
-    const newSession = this.sessionModel.create(createSession);
-
-    return newSession;
+  create(createSessionDto: CreateSessionDto) {
+    return 'This action adds a new session';
   }
 
   findAll() {
