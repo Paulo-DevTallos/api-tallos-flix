@@ -20,8 +20,8 @@ export class TheatersService {
     return await this.theatersModel.find();
   }
 
-  async findOne(id: string) {
-    return await this.theatersModel.findById({ _id: id });
+  findOne(id: string) {
+    return `This action returns a #${id} thater`;
   }
 
   update(id: string, updateTheaterDto: UpdateTheaterDto) {
