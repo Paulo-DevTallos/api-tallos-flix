@@ -3,7 +3,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { CommentsModule } from './comments/comments.module';
 import { MoviesModule } from './movies/movies.module';
-import { TheatersModule } from './thaters/theaters.module';
 
 @Module({
   imports: [
@@ -11,7 +10,6 @@ import { TheatersModule } from './thaters/theaters.module';
     UsersModule,
     CommentsModule,
     MoviesModule,
-    TheatersModule,
   ],
   controllers: [],
   providers: [],
