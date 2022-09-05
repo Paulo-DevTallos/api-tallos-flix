@@ -32,7 +32,7 @@ export class TheatersService {
     );
   }
 
-  async remove(id: string) {
-    return await this.theatersModel.deleteOne({ _id: id });
+  remove(id: string) {
+    return `This action removes a #${id} thater`;
   }
 }
