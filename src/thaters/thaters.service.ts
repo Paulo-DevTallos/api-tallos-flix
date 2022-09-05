@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTheaterDto } from './dto/create-theater.dto';
-import { UpdateTheaterDto } from './dto/update-theater.dto';
+import { CreateThaterDto } from './dto/create-thater.dto';
+import { UpdateThaterDto } from './dto/update-thater.dto';
 
 @Injectable()
-export class TheatersService {
-  create(createTheater: CreateTheaterDto) {
+export class ThatersService {
+  create(createThaterDto: CreateThaterDto) {
     return 'This action adds a new thater';
   }
 
@@ -12,15 +12,15 @@ export class TheatersService {
     return `This action returns all thaters`;
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     return `This action returns a #${id} thater`;
   }
 
-  update(id: string, updateTheaterDto: UpdateTheaterDto) {
+  update(id: number, updateThaterDto: UpdateThaterDto) {
     return `This action updates a #${id} thater`;
   }
 
-  remove(id: string) {
+  remove(id: number) {
     return `This action removes a #${id} thater`;
   }
 }
