@@ -25,11 +25,7 @@ export class SessionsService {
   }
 
   update(id: string, updateSessionDto: UpdateSessionDto) {
-    return this.sessionModel.findByIdAndUpdate(
-      { _id: id },
-      { $set: updateSessionDto },
-      { new: true },
-    );
+    return `This action updates a #${id} session`;
   }
 
   remove(id: string) {
