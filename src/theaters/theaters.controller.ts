@@ -15,27 +15,27 @@ import { TheatersService } from './theaters.service';
 export class TheatersController {
   constructor(private readonly theatersService: TheatersService) {}
 
-  @Post()
+  @Post('POST')
   create(@Body() createTheaterDto: CreateTheaterDto) {
     return this.theatersService.create(createTheaterDto);
   }
 
-  @Get()
+  @Get('GET')
   findAll() {
     return this.theatersService.findAll();
   }
 
-  @Get(':id')
+  @Get('GET/:id')
   findOne(@Param('id') id: string) {
     return this.theatersService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch('PATCH/:id')
   update(@Param('id') id: string, @Body() updateTheaterDto: UpdateTheaterDto) {
     return this.theatersService.update(id, updateTheaterDto);
   }
 
-  @Delete(':id')
+  @Delete('DELETE/:id')
   remove(@Param('id') id: string) {
     return this.theatersService.remove(id);
   }
