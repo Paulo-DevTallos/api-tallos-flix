@@ -12,29 +12,29 @@ export class SessionsService {
     private readonly sessionModel: Model<CreateSessionDto>,
   ) {}
 
-  async create(createSession: CreateSessionDto) {
+  create(createSession: CreateSessionDto) {
     const newSession = this.sessionModel.create(createSession);
 
-    return await newSession;
+    return newSession;
   }
 
-  async findAll() {
-    return await this.sessionModel.find();
+  findAll() {
+    return this.sessionModel.find();
   }
 
-  async findOne(id: string) {
-    return await this.sessionModel.findById({ _id: id });
+  findOne(id: string) {
+    return this.sessionModel.findById({ _id: id });
   }
 
-  async update(id: string, updateSessionDto: UpdateSessionDto) {
-    return await this.sessionModel.findByIdAndUpdate(
+  update(id: string, updateSessionDto: UpdateSessionDto) {
+    return this.sessionModel.findByIdAndUpdate(
       { _id: id },
       { $set: updateSessionDto },
       { new: true },
     );
   }
 
-  async remove(id: string) {
-    return await this.sessionModel.deleteOne({ _id: id });
+  remove(id: string) {
+    return this.sessionModel.deleteOne({ _id: id });
   }
 }
