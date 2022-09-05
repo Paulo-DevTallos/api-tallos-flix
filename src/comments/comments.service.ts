@@ -12,29 +12,27 @@ export class CommentsService {
     private readonly commentsModel: Model<CreateCommentDto>,
   ) {}
 
-  async create(createCommentDto: CreateCommentDto) {
-    const newComment = await this.commentsModel.create(createCommentDto);
-
-    return newComment;
+  create(createCommentDto: CreateCommentDto) {
+    return 'This action adds a new comment';
   }
 
-  async findAll() {
-    return await this.commentsModel.find();
+  findAll() {
+    return this.commentsModel.find();
   }
 
-  async findOne(id: string) {
-    return await this.commentsModel.findById({ _id: id });
+  findOne(id: string) {
+    return this.commentsModel.findById({ _id: id });
   }
 
-  async update(id: string, updateComment: UpdateCommentDto) {
-    return await this.commentsModel.findByIdAndUpdate(
+  update(id: string, updateComment: UpdateCommentDto) {
+    return this.commentsModel.findByIdAndUpdate(
       { _id: id },
       { $set: updateComment },
       { new: true },
     );
   }
 
-  async remove(id: string) {
-    return await this.commentsModel.deleteOne({ _id: id }).exec();
+  remove(id: string) {
+    return this.commentsModel.deleteOne({ _id: id }).exec();
   }
 }
