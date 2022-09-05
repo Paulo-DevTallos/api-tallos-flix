@@ -35,6 +35,6 @@ export class MoviesService {
   }
 
   remove(id: string) {
-    return this.moviesModel.deleteOne({ _id: id }).exec();
+    return `This action removes a #${id} movie`;
   }
 }
