@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { ITheaters } from '../interface/ITheaters';
 
 export type TheatersDocument = Theaters & Document;
 
@@ -8,19 +9,10 @@ export class Theaters {
   id: string;
 
   @Prop()
-  name: string;
+  theaterId: number;
 
   @Prop()
-  email: string;
-
-  @Prop()
-  movie_id: string;
-
-  @Prop()
-  text: string;
-
-  @Prop()
-  date: Date;
+  location: ITheaters;
 }
 
 export const TheatersSchema = SchemaFactory.createForClass(Theaters);
