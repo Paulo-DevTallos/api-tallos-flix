@@ -12,16 +12,18 @@ export class MoviesService {
     private readonly moviesModel: Model<CreateMovieDto>,
   ) {}
 
-  create(createMovie: CreateMovieDto) {
-    return 'This action adds a new movie';
+  async create(createMovie: CreateMovieDto) {
+    const newMovie = this.moviesModel.create(createMovie);
+
+    return await newMovie;
   }
 
   findAll() {
-    return `This action returns all movies`;
+    return this.moviesModel.find();
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} movie`;
+    return this.moviesModel.findById({ _id: id });
   }
 
   update(id: string, updateMovieDto: UpdateMovieDto) {
