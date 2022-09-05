@@ -15,17 +15,17 @@ import { UpdateMovieDto } from './dto/update-movie.dto';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Post()
+  @Post('POST')
   create(@Body() createMovieDto: CreateMovieDto) {
     return this.moviesService.create(createMovieDto);
   }
 
-  @Get()
+  @Get('GET')
   findAll() {
     return this.moviesService.findAll();
   }
 
-  @Get(':id')
+  @Get('GET/:id')
   findOne(@Param('id') id: string) {
     return this.moviesService.findOne(id);
   }
