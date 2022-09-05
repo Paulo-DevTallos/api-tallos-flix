@@ -33,6 +33,6 @@ export class CommentsService {
   }
 
   remove(id: string) {
-    return this.commentsModel.deleteOne({ _id: id }).exec();
+    return `This action removes a #${id} comment`;
   }
 }
