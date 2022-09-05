@@ -13,9 +13,7 @@ export class TheatersService {
   ) {}
 
   create(createTheater: CreateTheaterDto) {
-    const newTheaters = this.theatersModel.create(createTheater);
-
-    return newTheaters;
+    return 'This action adds a new thater';
   }
 
   async findAll() {
