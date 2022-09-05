@@ -20,15 +20,15 @@ export class SessionsService {
     return this.sessionModel.find();
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     return `This action returns a #${id} session`;
   }
 
-  update(id: string, updateSessionDto: UpdateSessionDto) {
+  update(id: number, updateSessionDto: UpdateSessionDto) {
     return `This action updates a #${id} session`;
   }
 
-  remove(id: string) {
+  remove(id: number) {
     return `This action removes a #${id} session`;
   }
 }
