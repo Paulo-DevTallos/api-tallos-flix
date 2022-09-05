@@ -11,7 +11,7 @@ export class Theaters {
   @Prop()
   theaterId: number;
 
-  @Prop()
+  @Prop({ type: Object })
   location: ITheaters;
 }
 
