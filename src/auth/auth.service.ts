@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Encript } from 'src/users/helpers/cripto';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
@@ -9,7 +10,18 @@ export class AuthService {
     const user = await this.userServices.findOneByEmail(email);
 
     if (user) {
-      console.log(user);
+      const compareValidPass = await Encript.ComparePassword(
+        password,
+        user.password,
+      );
+
+      if (compareValidPass) {
+        return {
+          ...user,
+          password: undefined,
+        };
+      }
     }
+    throw new Error('Email ou senha estão incorretos!');
   }
 }
