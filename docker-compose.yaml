@@ -10,6 +10,7 @@ services:
     restart: always
     volumes: 
       - .:/home/node/app
+      - /app/node_modules/bcrypt/
     tty: true
 #version: '3.7'
 
