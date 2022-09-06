@@ -4,5 +4,5 @@ export class CreateCommentDto {
   email: string;
   movie_id: string;
   text: string;
-  date: Date;
+  
 }
