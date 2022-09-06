@@ -16,10 +16,12 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Documentação da API TallosFLix')
+    .setDescription(
+      'A API TallosFLix é um server que se conecta com o cinema da Tallos, onde é possível realizar requisições como consultas, cadastramento e login e ter acesso a lista de filmes, comentários e informações sobre o set de filmes.',
+    )
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('TallosFlix')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
