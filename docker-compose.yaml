@@ -1,19 +1,26 @@
-version: '3.7'
+version: '3.9'
 
 services:
   app:
     build: .
     entrypoint: sh ./.docker/entrypoint.sh
     container_name: api-tallos-flix
-    ports: 
-     - 3003:3003
+    ports:
+      - 3003:3003
     restart: always
     volumes: 
-     - ./:/home/app
+      - .:/home/node/app
     tty: true
-    networks:
-      - api-tallos-flix
+#version: '3.7'
 
-networks:
-  api-tallos-flix:
-    driver: bridge
+#services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    entrypoint: sh ./.docker/entrypoint.sh
+#    container_name: api-tallos-flix
+#    ports: 
+#     - 3003:3003
+#    volumes: 
+#     - ./:/usr/tallosflix/app
