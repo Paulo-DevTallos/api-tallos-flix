@@ -10,17 +10,3 @@ export class Encript {
     return await bcrypt.compare(enterPass, userPass);
   }
 }
-
-/*export default {
-  encript: async (pass: string) => {
-    const salt = await bcrypt.genSalt();
-    return bcrypt.hash(pass, salt);
-  },
-};*/
-
-/*export class Encript {
-  static async CriptPassword(pass: string) {
-    const salt = await bcrypt.genSalt();
-    return bcrypt.hashSync(pass, salt);
-  }
-}*/
