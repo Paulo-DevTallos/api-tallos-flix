@@ -16,15 +16,15 @@ export class UsersService {
     const newUser = new this.userModel(createUser);
     newUser.password = await Encript.encodePassword(newUser.password);
 
-    return newUser.save();
+    return await newUser.save();
   }
 
   async findAll() {
     return await this.userModel.find();
   }
 
-  findOneByEmail(email: string) {
-    return this.userModel.find({ email });
+  async findOneByEmail(email: string) {
+    return await this.userModel.findOne({ email });
   }
 
   update(id: string, updateUser: UpdateUserDto) {
