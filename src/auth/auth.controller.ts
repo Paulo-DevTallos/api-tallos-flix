@@ -18,6 +18,11 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
   login(@Request() req: AuthRequest) {
-    return this.authService.login(req.user);
+    const user = req as any;
+    const userId = user.user.email;
+    const token = this.authService.login(req.user);
+    const session_token = token.access_token;
+    this.authService.registerSession(userId, session_token);
+    return token;
   }
 }
