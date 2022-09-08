@@ -11,10 +11,11 @@ import {
 import { SessionsService } from './sessions.service';
 import { CreateSessionDto } from './dto/create-session.dto';
 import { UpdateSessionDto } from './dto/update-session.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { LocalAuthGuard } from '../auth/guards/local-auth.guard';
 
 @ApiTags('sessions')
+@ApiBearerAuth('JWT-auth')
 @Controller('sessions')
 export class SessionsController {
   constructor(private readonly sessionsService: SessionsService) {}
