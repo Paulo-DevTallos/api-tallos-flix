@@ -12,16 +12,3 @@ services:
       - .:/home/node/app
       - /app/node_modules/bcrypt/
     tty: true
-#version: '3.7'
-
-#services:
-#  app:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    entrypoint: sh ./.docker/entrypoint.sh
-#    container_name: api-tallos-flix
-#    ports: 
-#     - 3003:3003
-#    volumes: 
-#     - ./:/usr/tallosflix/app
