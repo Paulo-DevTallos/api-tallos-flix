@@ -1,0 +1,19 @@
+FROM node:16
+
+WORKDIR /home/node/app
+
+RUN npm install @nestjs/cli
+
+COPY package* .
+
+RUN yarn install
+
+COPY . .
+
+RUN yarn build
+
+ENTRYPOINT [ "yarn", "start:dev" ]
+
+USER node
+
+EXPOSE 3003
