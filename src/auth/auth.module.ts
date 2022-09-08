@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { UsersModule } from 'src/users/users.module';
+import { UsersModule } from '../users/users.module';
 import { LocalStrategy } from './strategy/local.strategy';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Session, SessionSchema } from 'src/sessions/entities/session.entity';
+import { Session, SessionSchema } from '../sessions/entities/session.entity';
 
 @Module({
   imports: [
