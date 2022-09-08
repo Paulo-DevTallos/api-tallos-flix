@@ -5,7 +5,7 @@ import { CreateMovieDto } from './create-movie.dto';
 export class UpdateMovieDto extends PartialType(CreateMovieDto) {
   @ApiProperty({
     // eslint-disable-next-line prettier/prettier
-    description: 'Os campos de atualização de comentários seguem o mesmo padrão do CreateCommentsDto',
+    description: 'Os campos de atualização de comentários seguem o mesmo padrão do CreateMovieDto',
   })
-  updateComments: CreateMovieDto;
+  updateMovies: CreateMovieDto;
 }
