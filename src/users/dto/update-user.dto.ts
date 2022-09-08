@@ -7,5 +7,5 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     // eslint-disable-next-line prettier/prettier
     description: 'Os campos de atualização de comentários seguem o mesmo padrão do CreateUserDto',
   })
-  updateComments: CreateUserDto;
+  updateUsers: CreateUserDto;
 }
