@@ -18,27 +18,27 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 
-  @Post('POST')
+  @Post()
   create(@Body() createCommentDto: CreateCommentDto) {
     return this.commentsService.create(createCommentDto);
   }
 
-  @Get('GET')
+  @Get()
   findAll() {
     return this.commentsService.findAll();
   }
 
-  @Get('GET/:id')
+  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.commentsService.findOne(id);
   }
 
-  @Patch('PATCH/:id')
+  @Patch(':id')
   update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
     return this.commentsService.update(id, updateCommentDto);
   }
 
-  @Delete('DELETE/:id')
+  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.commentsService.remove(id);
   }
