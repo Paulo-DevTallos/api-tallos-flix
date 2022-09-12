@@ -19,7 +19,7 @@ export class MoviesService {
   }
 
   findAll() {
-    return this.moviesModel.find();
+    return this.moviesModel.find().limit(10);
   }
 
   findOne(id: string) {
