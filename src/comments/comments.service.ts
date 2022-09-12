@@ -19,7 +19,7 @@ export class CommentsService {
   }
 
   async findAll() {
-    return await this.commentsModel.find();
+    return await this.commentsModel.find().limit(10);
   }
 
   async findOne(id: string) {
