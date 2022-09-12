@@ -19,7 +19,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @ApiBody({
-    description: 'o mesmo formato do create e update user',
+    description: 'Formato necessário para a realização do login',
     type: CreateLoginDto,
   })
   @Post()
