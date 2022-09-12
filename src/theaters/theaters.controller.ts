@@ -18,27 +18,27 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 export class TheatersController {
   constructor(private readonly theatersService: TheatersService) {}
 
-  @Post('POST')
+  @Post()
   create(@Body() createTheaterDto: CreateTheaterDto) {
     return this.theatersService.create(createTheaterDto);
   }
 
-  @Get('GET')
+  @Get()
   findAll() {
     return this.theatersService.findAll();
   }
 
-  @Get('GET/:id')
+  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.theatersService.findOne(id);
   }
 
-  @Patch('PATCH/:id')
+  @Patch(':id')
   update(@Param('id') id: string, @Body() updateTheaterDto: UpdateTheaterDto) {
     return this.theatersService.update(id, updateTheaterDto);
   }
 
-  @Delete('DELETE/:id')
+  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.theatersService.remove(id);
   }
