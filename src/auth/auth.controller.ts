@@ -22,7 +22,7 @@ export class AuthController {
     description: 'o mesmo formato do create e update user',
     type: [CreateUserDto],
   })
-  @Post('POST')
+  @Post()
   @isPublic()
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
