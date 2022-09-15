@@ -13,7 +13,7 @@
 #      - /app/node_modules/bcrypt/
 #    tty: true
 
-version: "3.9"
+version: "3.7"
 
 networks:
   kong-net:
