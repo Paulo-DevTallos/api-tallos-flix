@@ -20,6 +20,7 @@ export class CreateCommentDto {
   @ApiProperty({
     // eslint-disable-next-line prettier/prettier
     description: 'Id relacional da collection de movies trás todo os campos do filme referente ao comentário',
+    example: '573a1390f29313caabcd421',
   })
   movie_id: string;
 
@@ -29,4 +30,10 @@ export class CreateCommentDto {
     example: 'usuario@email.com',
   })
   text: string;
+
+  @ApiProperty({
+    description: 'data que o comentario foi feito',
+    example: '1983-04-27T20:39:15.000+00:00',
+  })
+  date: Date;
 }

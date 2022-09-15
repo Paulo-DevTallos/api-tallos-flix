@@ -27,7 +27,7 @@ export class TheatersService {
   }
 
   async update(id: string, updateTheaterDto: UpdateTheaterDto) {
-    return await this.theatersModel.findByIdAndUpdate(
+    return await this.theatersModel.updateOne(
       { _id: id },
       { $set: updateTheaterDto },
       { new: true },

@@ -35,13 +35,14 @@ export class UsersController {
     return this.usersService.findOneUser(id);
   }
 
-  @Get('email')
+  /*@Get('email')
   findOne(@Param('email') email: string) {
     return this.usersService.findOneByEmail(email);
-  }
+  }*/
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    console.log(updateUserDto);
     return this.usersService.update(id, updateUserDto);
   }
 

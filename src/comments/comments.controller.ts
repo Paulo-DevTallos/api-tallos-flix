@@ -34,8 +34,9 @@ export class CommentsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
-    return this.commentsService.update(id, updateCommentDto);
+  update(@Param('id') id: string, @Body() updateComment: UpdateCommentDto) {
+    console.log(updateComment);
+    return this.commentsService.update(id, updateComment);
   }
 
   @Delete(':id')

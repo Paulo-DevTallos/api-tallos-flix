@@ -32,7 +32,7 @@ export class UsersService {
   }
 
   async update(id: string, updateUser: UpdateUserDto) {
-    return await this.userModel.findOneAndUpdate(
+    return await this.userModel.updateOne(
       { _id: id },
       { $set: updateUser },
       { new: true },

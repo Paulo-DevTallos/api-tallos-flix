@@ -27,7 +27,7 @@ export class MoviesService {
   }
 
   update(id: string, updateMovieDto: UpdateMovieDto) {
-    return this.moviesModel.findByIdAndUpdate(
+    return this.moviesModel.updateOne(
       { _id: id },
       { $set: updateMovieDto },
       { new: true },

@@ -3,13 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
-import { Comments } from './entities/comment.entity';
+import { Comments, CommentsDocument } from './entities/comment.entity';
 
 @Injectable()
 export class CommentsService {
   constructor(
     @InjectModel(Comments.name)
-    private readonly commentsModel: Model<CreateCommentDto>,
+    private readonly commentsModel: Model<CommentsDocument>,
   ) {}
 
   async create(createCommentDto: CreateCommentDto) {
@@ -27,7 +27,7 @@ export class CommentsService {
   }
 
   async update(id: string, updateComment: UpdateCommentDto) {
-    return await this.commentsModel.findByIdAndUpdate(
+    return await this.commentsModel.findOneAndUpdate(
       { _id: id },
       { $set: updateComment },
       { new: true },

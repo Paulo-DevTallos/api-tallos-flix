@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateMovieDto {
-  id: string;
-
   @ApiProperty({
     // eslint-disable-next-line prettier/prettier
     description: 'O plot trata-se da sinopse do filme. Recebe qualquer tipo texto',
