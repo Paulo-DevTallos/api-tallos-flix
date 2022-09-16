@@ -16,7 +16,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 @ApiBearerAuth('JWT-auth')
 @Controller('theaters')
 export class TheatersController {
-  constructor(private readonly theatersService: TheatersService) {}
+  constructor(private theatersService: TheatersService) {}
 
   @Post()
   create(@Body() createTheaterDto: CreateTheaterDto) {
