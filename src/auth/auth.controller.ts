@@ -11,7 +11,7 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthRequest } from './models/auth.request';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { isPublic } from './decorators/is-public-decorator';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { CreateLoginDto } from './dto/create-login.dto';
 
 @ApiTags('login')
 @Controller('login')
@@ -19,10 +19,10 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @ApiBody({
-    description: 'o mesmo formato do create e update user',
-    type: [CreateUserDto],
+    description: 'Formato necessário para a realização do login',
+    type: CreateLoginDto,
   })
-  @Post('POST')
+  @Post()
   @isPublic()
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)

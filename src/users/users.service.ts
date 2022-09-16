@@ -23,19 +23,23 @@ export class UsersService {
     return await this.userModel.find();
   }
 
+  async findOneUser(id: string) {
+    return await this.userModel.findById(id);
+  }
+
   async findOneByEmail(email: string) {
     return await this.userModel.findOne({ email });
   }
 
-  update(id: string, updateUser: UpdateUserDto) {
-    return this.userModel.findOneAndUpdate(
+  async update(id: string, updateUser: UpdateUserDto) {
+    return await this.userModel.updateOne(
       { _id: id },
       { $set: updateUser },
       { new: true },
     );
   }
 
-  remove(id: string) {
-    return this.userModel.deleteOne({ _id: id }).exec();
+  async remove(id: string) {
+    return await this.userModel.deleteOne({ _id: id }).exec();
   }
 }

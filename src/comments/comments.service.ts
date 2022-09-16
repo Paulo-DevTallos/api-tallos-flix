@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { Comments } from './entities/comment.entity';
+import { InjectModel } from '@nestjs/mongoose/dist';
 
 @Injectable()
 export class CommentsService {
@@ -19,7 +19,7 @@ export class CommentsService {
   }
 
   async findAll() {
-    return await this.commentsModel.find();
+    return await this.commentsModel.find().limit(10);
   }
 
   async findOne(id: string) {
@@ -27,6 +27,7 @@ export class CommentsService {
   }
 
   async update(id: string, updateComment: UpdateCommentDto) {
+    console.log(updateComment);
     return await this.commentsModel.findByIdAndUpdate(
       { _id: id },
       { $set: updateComment },

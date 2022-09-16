@@ -1,0 +1,19 @@
+FROM node:16
+
+WORKDIR /home/node/app
+
+RUN npm install @nestjs/cli
+
+COPY package* .
+
+RUN npm install --force
+
+COPY . .
+
+RUN npm run build
+
+ENTRYPOINT [ "npm", "start" ]
+
+USER node
+
+EXPOSE 3003
