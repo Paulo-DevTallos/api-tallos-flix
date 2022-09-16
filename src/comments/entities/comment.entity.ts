@@ -5,13 +5,15 @@ export type CommentsDocument = Comments & Document;
 
 @Schema()
 export class Comments {
+  id?: string;
+
   @Prop()
   name: string;
 
   @Prop()
   email: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'movies', required: true })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'movies' })
   movie_id: string;
 
   @Prop()
