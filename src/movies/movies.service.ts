@@ -18,23 +18,23 @@ export class MoviesService {
     return await newMovie;
   }
 
-  findAll() {
-    return this.moviesModel.find().limit(10);
+  async findAll() {
+    return await this.moviesModel.find().limit(10);
   }
 
-  findOne(id: string) {
-    return this.moviesModel.findById({ _id: id });
+  async findOne(id: string) {
+    return await this.moviesModel.findById({ _id: id });
   }
 
-  update(id: string, updateMovieDto: UpdateMovieDto) {
-    return this.moviesModel.updateOne(
+  async update(id: string, updateMovieDto: UpdateMovieDto) {
+    return await this.moviesModel.findByIdAndUpdate(
       { _id: id },
       { $set: updateMovieDto },
       { new: true },
     );
   }
 
-  remove(id: string) {
-    return this.moviesModel.deleteOne({ _id: id }).exec();
+  async remove(id: string) {
+    return await this.moviesModel.deleteOne({ _id: id }).exec();
   }
 }
