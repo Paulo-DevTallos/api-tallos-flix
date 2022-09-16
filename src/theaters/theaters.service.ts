@@ -12,10 +12,10 @@ export class TheatersService {
     private readonly theatersModel: Model<CreateTheaterDto>,
   ) {}
 
-  create(createTheater: CreateTheaterDto) {
+  async create(createTheater: CreateTheaterDto) {
     const newTheaters = this.theatersModel.create(createTheater);
 
-    return newTheaters;
+    return await newTheaters;
   }
 
   async findAll() {
@@ -27,7 +27,7 @@ export class TheatersService {
   }
 
   async update(id: string, updateTheaterDto: UpdateTheaterDto) {
-    return await this.theatersModel.findByIdAndUpdate(
+    return await this.theatersModel.updateOne(
       { _id: id },
       { $set: updateTheaterDto },
       { new: true },

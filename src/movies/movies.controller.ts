@@ -18,27 +18,28 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Post('POST')
+  @Post()
   create(@Body() createMovieDto: CreateMovieDto) {
     return this.moviesService.create(createMovieDto);
   }
 
-  @Get('GET')
+  @Get()
   findAll() {
     return this.moviesService.findAll();
   }
 
-  @Get('GET/:id')
+  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.moviesService.findOne(id);
   }
 
-  @Patch('PATCH/:id')
+  @Patch(':id')
   update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
+    console.log(updateMovieDto);
     return this.moviesService.update(id, updateMovieDto);
   }
 
-  @Delete('DELETE/:id')
+  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.moviesService.remove(id);
   }

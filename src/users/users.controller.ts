@@ -20,27 +20,33 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @isPublic()
-  @Post('POST')
+  @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
-  @Get('GET')
+  @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get('GET/:email')
-  findOne(@Param('email') email: string) {
-    return this.usersService.findOneByEmail(email);
+  @Get(':id')
+  findOneUser(@Param('id') id: string) {
+    return this.usersService.findOneUser(id);
   }
 
-  @Patch('PATCH/:id')
+  /*@Get('email')
+  findOne(@Param('email') email: string) {
+    return this.usersService.findOneByEmail(email);
+  }*/
+
+  @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    console.log(updateUserDto);
     return this.usersService.update(id, updateUserDto);
   }
 
-  @Delete('DELETE/:id')
+  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }
