@@ -4,7 +4,7 @@ COPY package* .
 
 WORKDIR /home/node/app
 
-RUN npm install @nestjs/cli && npm install
+RUN npm install @nestjs/cli && npm install --force
 
 COPY . .
 

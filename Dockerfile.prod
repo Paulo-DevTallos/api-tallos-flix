@@ -6,13 +6,13 @@ RUN npm install @nestjs/cli
 
 COPY package* .
 
-RUN yarn install
+RUN npm install --force
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
-ENTRYPOINT [ "yarn", "start:dev" ]
+ENTRYPOINT [ "npm", "start" ]
 
 USER node
 
