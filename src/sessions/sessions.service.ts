@@ -27,7 +27,7 @@ export class SessionsService {
   }
 
   async update(id: string, updateSessionDto: UpdateSessionDto) {
-    return await this.sessionModel.findByIdAndUpdate(
+    return await this.sessionModel.findOneAndUpdate(
       { _id: id },
       { $set: updateSessionDto },
       { new: true },

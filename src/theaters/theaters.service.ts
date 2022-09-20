@@ -19,7 +19,7 @@ export class TheatersService {
   }
 
   async findAll() {
-    return await this.theatersModel.find();
+    return await this.theatersModel.find().limit(10);
   }
 
   async findOne(id: string) {
@@ -27,7 +27,7 @@ export class TheatersService {
   }
 
   async update(id: string, updateTheaterDto: UpdateTheaterDto) {
-    return await this.theatersModel.updateOne(
+    return await this.theatersModel.findOneAndUpdate(
       { _id: id },
       { $set: updateTheaterDto },
       { new: true },
