@@ -19,7 +19,12 @@ export class MoviesService {
   }
 
   async findAll() {
-    return await this.moviesModel.find().limit(10);
+    return await this.moviesModel.find();
+  }
+
+  async findAndPaginate(limit: number, skip: number) {
+    const skipValue = limit * (skip - 1);
+    return this.moviesModel.find().limit(limit).skip(skipValue);
   }
 
   async findOne(id: string) {

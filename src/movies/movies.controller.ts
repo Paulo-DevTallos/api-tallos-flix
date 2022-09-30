@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { query } from 'express';
 
 @ApiTags('movies')
 @ApiBearerAuth('JWT-auth')
@@ -26,6 +28,11 @@ export class MoviesController {
   @Get()
   findAll() {
     return this.moviesService.findAll();
+  }
+
+  @Get('paginate')
+  findAndPaginate(@Query('limit') limit: number, @Query('skip') skip: number) {
+    return this.moviesService.findAndPaginate(limit, skip);
   }
 
   @Get(':id')
