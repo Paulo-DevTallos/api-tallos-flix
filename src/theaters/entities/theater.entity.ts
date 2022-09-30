@@ -6,9 +6,6 @@ export type TheatersDocument = Theaters & Document;
 @Schema()
 export class Theaters {
   @Prop()
-  id: string;
-
-  @Prop()
   theaterId: number;
 
   @Prop({ type: Object })

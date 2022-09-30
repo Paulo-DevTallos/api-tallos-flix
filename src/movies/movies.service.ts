@@ -27,7 +27,7 @@ export class MoviesService {
   }
 
   async update(id: string, updateMovieDto: UpdateMovieDto) {
-    return await this.moviesModel.findByIdAndUpdate(
+    return await this.moviesModel.findOneAndUpdate(
       { _id: id },
       { $set: updateMovieDto },
       { new: true },

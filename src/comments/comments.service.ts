@@ -28,7 +28,7 @@ export class CommentsService {
 
   async update(id: string, updateComment: UpdateCommentDto) {
     console.log(updateComment);
-    return await this.commentsModel.findByIdAndUpdate(
+    return await this.commentsModel.findOneAndUpdate(
       { _id: id },
       { $set: updateComment },
       { new: true },

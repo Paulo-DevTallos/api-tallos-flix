@@ -22,6 +22,8 @@ async function bootstrap() {
     )
     .setVersion('1.0')
     .addTag('TallosFlix')
+    .addServer('/')
+    .addServer('/app')
     .addBearerAuth(
       {
         type: 'http',
