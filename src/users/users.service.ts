@@ -20,7 +20,7 @@ export class UsersService {
   }
 
   async findAll() {
-    return await this.userModel.find();
+    return await this.userModel.find().sort({ createdAt: -1 });
   }
 
   async findOneUser(id: string) {
