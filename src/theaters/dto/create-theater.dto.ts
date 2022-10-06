@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 import { ITheaters } from '../interface/ITheaters';
 
 export class CreateTheaterDto {
@@ -8,7 +8,14 @@ export class CreateTheaterDto {
     description: 'Trás o código de identificação da sala de cinema',
   })
   @IsNotEmpty()
-  theatherId: number;
+  theaterId: number;
+
+  @ApiProperty({
+    // eslint-disable-next-line prettier/prettier
+    description: 'Trás o nome da sala de cinema',
+  })
+  @IsNotEmpty()
+  name: string;
 
   @ApiProperty({
     // eslint-disable-next-line prettier/prettier

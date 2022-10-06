@@ -1,10 +1,6 @@
-FROM node:16
+FROM node:alpine
 
-COPY package* .
-
-WORKDIR /home/node/app
-
-RUN npm install @nestjs/cli && npm install
+WORKDIR /home/app
 
 COPY . .
 

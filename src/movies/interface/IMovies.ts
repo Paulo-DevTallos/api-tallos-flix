@@ -23,13 +23,11 @@ export interface Movies {
 
 /*export interface Movies {
   Award: awards;
-
   Tomatores: {
     name: string;
     year: number;
   };
 }
-
 type awards = {
   name: string;
   year: number;

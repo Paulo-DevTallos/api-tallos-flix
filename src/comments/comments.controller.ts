@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
@@ -26,6 +27,16 @@ export class CommentsController {
   @Get()
   findAll() {
     return this.commentsService.findAll();
+  }
+
+  @Get('paginate')
+  findAndPaginate(@Query('limit') limit: number, @Query('skip') skip: number) {
+    return this.commentsService.findAndPaginate(limit, skip);
+  }
+
+  @Get('search/:name')
+  findComment(@Param('name') name: string) {
+    return this.commentsService.findCommentByUserName(name);
   }
 
   @Get(':id')

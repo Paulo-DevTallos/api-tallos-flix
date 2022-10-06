@@ -18,8 +18,13 @@ export class TheatersService {
     return await newTheaters;
   }
 
+  async findAndPaginate(limit: number, skip: number) {
+    const skipValue = limit * (skip - 1);
+    return this.theatersModel.find().limit(limit).skip(skipValue);
+  }
+
   async findAll() {
-    return await this.theatersModel.find().limit(10);
+    return await this.theatersModel.find().sort({ name: -1 }).limit(10);
   }
 
   async findOne(id: string) {

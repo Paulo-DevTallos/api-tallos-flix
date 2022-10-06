@@ -13,6 +13,12 @@ export class UsersService {
   ) {}
 
   async create(createUser: CreateUserDto) {
+    const existUser = await this.userModel.findOne({
+      email: createUser.email,
+    });
+
+    if (existUser) throw new Error('O Usuário já existe!');
+
     const newUser = new this.userModel(createUser);
     newUser.password = await Encript.encodePassword(newUser.password);
 
@@ -20,11 +26,32 @@ export class UsersService {
   }
 
   async findAll() {
-    return await this.userModel.find();
+    return await this.userModel.find().sort({ createdAt: -1 });
+  }
+
+  async findAndPaginate(documentToSkip = 1, limitsOfDocument?: number) {
+    const findQuery = this.userModel
+      .find()
+      .sort({ createdAt: -1 })
+      .skip(documentToSkip);
+
+    if (limitsOfDocument) {
+      findQuery.limit(limitsOfDocument);
+    }
+
+    const result = await findQuery;
+    const count = await this.userModel.countDocuments();
+
+    console.log(documentToSkip);
+    return { result, count };
   }
 
   async findOneUser(id: string) {
     return await this.userModel.findById(id);
+  }
+
+  async findUserByEmail(email: string) {
+    return await this.userModel.find({ email });
   }
 
   async findOneByEmail(email: string) {

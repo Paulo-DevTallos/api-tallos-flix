@@ -1,14 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  IsArray,
-  IsDateString,
-  IsObject,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsArray } from 'class-validator';
 
 export class CreateMovieDto {
+  id?: string;
+
   @ApiProperty({
     // eslint-disable-next-line prettier/prettier
     description: 'O plot trata-se da sinopse do filme. Recebe qualquer tipo texto',
@@ -30,7 +25,7 @@ export class CreateMovieDto {
     description: 'Se refere a todo tempo decorrido do filme. Recebe um tipo numérico',
     example: 8,
   })
-  @IsNumber()
+  @IsNotEmpty()
   runtime: number;
 
   @ApiProperty({
@@ -38,7 +33,7 @@ export class CreateMovieDto {
     description: 'Recebe os artistas que participaram do filme. Recebe uma lista de texto com os atores e atrizes do filme',
     example: "['Angelina Jolie', 'Adan Sndler', 'Jon Denver']",
   })
-  @IsArray()
+  @IsNotEmpty()
   cast: [string];
 
   @ApiProperty({
@@ -46,7 +41,7 @@ export class CreateMovieDto {
     description: 'Refere-se ao número de comentários relacionados ao filme. Recebe um tipo numérico',
     example: 2,
   })
-  @IsNumber()
+  @IsNotEmpty()
   num_mflix_comments: number;
 
   @ApiProperty({
@@ -85,8 +80,8 @@ export class CreateMovieDto {
     description: 'Recebe a data de lançamento do filme. Recebe uma data em formato de timestamp',
     example: /"1911-04-08T00:00:00.000+00:00"/,
   })
-  @IsDateString()
-  released: Date;
+  @IsNotEmpty()
+  released: string;
 
   @ApiProperty({
     // eslint-disable-next-line prettier/prettier
@@ -109,7 +104,7 @@ export class CreateMovieDto {
     description: 'Agrupa todos os prêmios que o filme já recebeu. Recebe uma estrutura de objeto',
     example: "{ Oscar: 2, nomanation: 0, text: '1 win' }",
   })
-  @IsObject()
+  @IsNotEmpty()
   awards: object;
 
   @ApiProperty({
@@ -125,7 +120,7 @@ export class CreateMovieDto {
     description: 'Refere-se ao ano de lançamento do filme. Recebe um tipo numérico',
     example: 1997,
   })
-  @IsNumber()
+  @IsNotEmpty()
   year: number;
 
   @ApiProperty({
@@ -134,7 +129,7 @@ export class CreateMovieDto {
     // eslint-disable-next-line prettier/prettier
     example: "{ rating: 7, vote: 1034, id: 1737 }",
   })
-  @IsObject()
+  @IsNotEmpty()
   imdb: object;
 
   @ApiProperty({
@@ -159,6 +154,6 @@ export class CreateMovieDto {
     // eslint-disable-next-line prettier/prettier
     example: "{ rating: 9, numReviewers: 105, meter: 50 }, { lastUpdated: 'timeStamp'}",
   })
-  @IsObject()
+  @IsNotEmpty()
   tomatoes: object;
 }
