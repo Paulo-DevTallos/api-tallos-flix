@@ -2,24 +2,33 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
-import { Comments } from './entities/comment.entity';
+import { Comments, CommentsDocument } from './entities/comment.entity';
 import { InjectModel } from '@nestjs/mongoose/dist';
 
 @Injectable()
 export class CommentsService {
   constructor(
     @InjectModel(Comments.name)
-    private readonly commentsModel: Model<CreateCommentDto>,
+    private readonly commentsModel: Model<CommentsDocument>,
   ) {}
 
   async create(createCommentDto: CreateCommentDto) {
-    const newComment = await this.commentsModel.create(createCommentDto);
+    const newComment = new this.commentsModel(createCommentDto);
 
-    return newComment;
+    return await newComment.save();
   }
 
   async findAll() {
-    return await this.commentsModel.find().limit(10);
+    return await this.commentsModel.find().sort({ date: -1 }).limit(10);
+  }
+
+  async findAndPaginate(limit: number, skip: number) {
+    const skipValue = limit * (skip - 1);
+    return this.commentsModel.find().limit(limit).skip(skipValue);
+  }
+
+  async findCommentByUserName(name: string) {
+    return await this.commentsModel.find({ name });
   }
 
   async findOne(id: string) {

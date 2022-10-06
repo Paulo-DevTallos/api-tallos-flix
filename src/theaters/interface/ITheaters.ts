@@ -1,7 +1,7 @@
 export interface ITheaters {
   location: {
     address: {
-      street: string;
+      street1: string;
       city: string;
       state: string;
       zipcode: string;
@@ -10,5 +10,5 @@ export interface ITheaters {
       type: string;
       coordinate: [];
     };
-  }
+  };
 }

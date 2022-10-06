@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -30,14 +31,19 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('paginate')
+  findAndPaginate(@Query('limit') limit: number, @Query('skip') skip: number) {
+    return this.usersService.findAndPaginate(skip, limit);
+  }
+
   @Get(':id')
   findOneUser(@Param('id') id: string) {
     return this.usersService.findOneUser(id);
   }
 
   @Get('search/:email')
-  searchUser(@Param('email') email: string) {
-    return this.usersService.findByFilter(email);
+  findUser(@Param('email') email: string) {
+    return this.usersService.findUserByEmail(email);
   }
 
   @Patch(':id')

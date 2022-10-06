@@ -5,8 +5,7 @@ export type MovieDocument = Movie & Document;
 
 @Schema()
 export class Movie {
-  @Prop()
-  id: string;
+  id?: string;
 
   @Prop()
   plot: string;
@@ -36,7 +35,7 @@ export class Movie {
   languages: [string];
 
   @Prop()
-  released: Date;
+  released: string;
 
   @Prop()
   directors: [string];

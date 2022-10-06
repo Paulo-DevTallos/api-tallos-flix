@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsEmail, IsDateString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateCommentDto {
   id?: string;
@@ -10,7 +10,6 @@ export class CreateCommentDto {
     example: 'Qualquer texto digitável - (Paulo Sérgio, paulo sergio)',
   })
   @IsNotEmpty()
-  @IsString()
   name: string;
 
   @ApiProperty({
@@ -18,7 +17,6 @@ export class CreateCommentDto {
     description: 'O campo email idenfica o e-mail do usuário que escreve o comentário',
     example: 'usuario@email.com',
   })
-  @IsNotEmpty()
   @IsEmail()
   email: string;
 
@@ -36,13 +34,12 @@ export class CreateCommentDto {
     example: 'usuario@email.com',
   })
   @IsNotEmpty()
-  @IsString()
   text: string;
 
   @ApiProperty({
     description: 'data que o comentario foi feito',
     example: '1983-04-27T20:39:15.000+00:00',
   })
-  @IsDateString()
-  date: Date;
+  @IsString()
+  date: string;
 }

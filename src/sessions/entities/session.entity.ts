@@ -7,7 +7,7 @@ export class Session {
   @Prop()
   user_id: string;
 
-  @Prop()
+  @Prop({ type: String, expires: '24h' })
   jwt: string;
 }
 

@@ -19,8 +19,8 @@ export class Comments {
   @Prop()
   text: string;
 
-  @Prop()
-  date: Date;
+  @Prop({ type: Date, default: Date.now })
+  date: string;
 }
 
 export const CommentsSchema = SchemaFactory.createForClass(Comments);

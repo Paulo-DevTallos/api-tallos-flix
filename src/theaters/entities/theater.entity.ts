@@ -8,6 +8,9 @@ export class Theaters {
   @Prop()
   theaterId: number;
 
+  @Prop()
+  name: string;
+
   @Prop({ type: Object })
   location: ITheaters;
 }

@@ -3,13 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
-import { Movie } from './entities/movie.entity';
+import { Movie, MovieDocument } from './entities/movie.entity';
 
 @Injectable()
 export class MoviesService {
   constructor(
     @InjectModel(Movie.name)
-    private readonly moviesModel: Model<CreateMovieDto>,
+    private readonly moviesModel: Model<MovieDocument>,
   ) {}
 
   async create(createMovie: CreateMovieDto) {
@@ -19,12 +19,16 @@ export class MoviesService {
   }
 
   async findAll() {
-    return await this.moviesModel.find();
+    return await this.moviesModel.find().limit(10);
   }
 
   async findAndPaginate(limit: number, skip: number) {
     const skipValue = limit * (skip - 1);
     return this.moviesModel.find().limit(limit).skip(skipValue);
+  }
+
+  async findMovieByName(title: string) {
+    return await this.moviesModel.find({ title });
   }
 
   async findOne(id: string) {
